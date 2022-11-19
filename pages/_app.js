@@ -1,13 +1,15 @@
 import '../styles/globals.css'
 import Footer from '../components/Footer'
 import {SessionProvider} from 'next-auth/react'
-import Router from 'next/router';
+import {useRouter} from 'next/router';
 
 function MyApp({ Component, pageProps }) {
 
+  const router = useRouter();
+
   return <SessionProvider session={pageProps.session}>
     <Component {...pageProps}/>
-    {Router.pathname !== "/" ? <Footer /> : <></>}
+    {router.pathname !== "/" ? <Footer /> : <></>}
   </SessionProvider> 
 }
 

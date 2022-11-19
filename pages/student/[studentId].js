@@ -10,7 +10,7 @@ const classes = {
   }
 }
 
-export default function Student(){
+export default function studentId(){
 
     const router = useRouter();
     const studentId = router.query.studentId

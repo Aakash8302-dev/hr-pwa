@@ -13,7 +13,7 @@ const authOptions = NextAuthOptions = {
             async authorize(credentials,req){
                 const {email, password} = credentials;
 
-                const res = await fetch('http://localhost:3000/api/user/signin', {
+                const res = await fetch('api/user/signin', {
                     method: "POST",
                     body: JSON.stringify({email, password}),
                     headers:{
@@ -30,8 +30,9 @@ const authOptions = NextAuthOptions = {
                 }
 
             }
-        })
+        }),
     ],
+    secret: process.env.NEXTAUTH_SECRET || 123,
     pages:{
         signIn: '/',
     }

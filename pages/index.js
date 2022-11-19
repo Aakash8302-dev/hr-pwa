@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import {useSession} from 'next-auth/react'
 import { Grid, Box } from "@mui/material"
 import LoginForm from "../components/LoginForm"
-
+import Head from "next/head"
 
 const classes = {
   root:{
@@ -18,7 +18,7 @@ const classes = {
   }
 }
 
-export default function Home() {
+export default function Index() {
 
   const {data: session, status} = useSession();
   const router = useRouter();
@@ -31,12 +31,12 @@ export default function Home() {
  
   return (
     <Grid container sx={{...classes.root}}>
-            <Grid item sm={12} sx={{...classes.formWrap}}>
-                <Box>
-                    <h2>Welcome to <br/>Forese Volunteer App</h2>
-                    <LoginForm />
-                </Box>
-            </Grid>
+      <Grid item sm={12} sx={{...classes.formWrap}}>
+          <Box>
+              <h2>Welcome to <br/>Forese Volunteer App</h2>
+              <LoginForm />
+          </Box>
+      </Grid>
     </Grid>
   )
 }

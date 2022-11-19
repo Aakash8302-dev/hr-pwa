@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Box, Grid, TextField,Typography, styled, MenuItem, Button } from "@mui/material";
 import { useForm, Form } from "../../components/useForm";
 import { branches } from "../../data/index";
-import Router from "next/router";
+import {useRouter} from "next/router";
 import { useSession } from "next-auth/react";
 import axios from 'axios'
 
@@ -27,12 +27,14 @@ const classes = {
     }
 }
 
-function addstudent(){
+export default function Addstudent(){
+
+    const router = useRouter();
 
     const {data: session, status} = useSession();
 
     useEffect(()=>{
-        if(status === "unauthenticated") Router.replace("/");
+        if(status === "unauthenticated") router.replace("/");
     },[])
 
     const { values, setValues, errors, setErrors, handleInputChange } = useForm(initialValues)
@@ -116,5 +118,3 @@ function addstudent(){
     </Box>
 
 }
-
-export default addstudent;

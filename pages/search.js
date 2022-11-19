@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {Box} from "@mui/material"
 import SearchBar from "../components/SearchBar"
 import BookData from "../utils/Data.json"
-import Router from "next/router";
+import {useRouter} from "next/router";
 import { useSession } from "next-auth/react";
 import axios from 'axios'
 
@@ -16,6 +16,8 @@ const classes = {
 }
 
 export default function Search (){
+
+    const router = useRouter();
 
     const {data: session, status} = useSession();
 
@@ -31,7 +33,7 @@ export default function Search (){
         }
 
         if(status === "unauthenticated"){
-            Router.push("/");
+            router.push("/");
         }else{
             getAllStudents();
         }   
